@@ -15,21 +15,22 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
     long start = millis();
-    long total1 =  cs_4_2.capacitiveSensor(30);
-    long total2 =  cs_4_6.capacitiveSensor(30);
-    long total3 =  cs_4_8.capacitiveSensor(30);
-    long total4 = cs_4_9.capacitiveSensor(30);
-    
+    long total1 =  cs_4_2.capacitiveSensor(30); //to p
+    long total2 =  cs_4_6.capacitiveSensor(30); //right
+    long total3 =  cs_4_8.capacitiveSensor(30);//bottom
+    long total4 = cs_4_9.capacitiveSensor(30);//left
+    int x_dir=0;
+    int y_dir=0;  
     Serial.print(millis() - start);        // check on performance in milliseconds
     Serial.print("\t");                    // tab character for debug window spacingk
 
-    Serial.print(total1);                  // print sensor output 1
+  /*  Serial.print(total1);                  // print sensor output 1
     Serial.print("\t");
     Serial.print(total2);                  // print sensor output 2
     Serial.print("\t");
     Serial.print(total3);                // print sensor output 3
      Serial.print("\t");
-   Serial.println(total4);
+   Serial.println(total4); */
    if(total1 == -2){
     Serial.println("Pin 9 is doing you a dirty");  
    }
@@ -43,5 +44,9 @@ void loop() {
     Serial.println("Pin 12 is doing you a dirty");  
    }
 
+  
+ y_dir = (total1-total3)/100;
+ x_dir = (total2-total3)/100;
+  Serial.println("x"+x_dir+"y"+y_dir);
     
 }
